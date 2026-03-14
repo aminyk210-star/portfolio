@@ -1,0 +1,524 @@
+.main {
+    background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+    color: #fff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  
+  /* Hero Section */
+  .hero {
+    min-height: 50vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 6rem 2rem;
+  }
+  
+  .heroBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  .orb1, .orb2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+  }
+  
+  .orb1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    top: -200px;
+    right: -200px;
+    opacity: 0.2;
+  }
+  
+  .orb2 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(45deg, #4ecdc4, #667eea);
+    bottom: -150px;
+    left: -150px;
+    opacity: 0.15;
+  }
+  
+  .gridOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .floatingIcons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .floatingIcon {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 2rem;
+    transform-origin: center;
+  }
+  
+  .heroContent {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .sectionBadge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  
+  .gradientText {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradient 8s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .subtitle {
+    color: #aaa;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Contact Section */
+  .contactSection {
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 20;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+  }
+  
+  /* Info Column */
+  .infoColumn {
+    padding-right: 2rem;
+  }
+  
+  .infoTitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  
+  .infoDescription {
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  
+  .contactCards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .contactCard {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .contactCardIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .contactCardContent {
+    flex: 1;
+  }
+  
+  .contactCardLabel {
+    display: block;
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .contactCardValue {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .contactCardValue:hover {
+    color: #4ecdc4;
+  }
+  
+  .copyButton {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .copyButton:hover {
+    background: #4ecdc4;
+    color: #fff;
+  }
+  
+  /* Social Section */
+  .socialSection {
+    margin-bottom: 2rem;
+  }
+  
+  .socialSection h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .socialGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .socialCard {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .socialIcon {
+    font-size: 1.5rem;
+  }
+  
+  .socialName {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  /* CV Button */
+  .cvButton {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: linear-gradient(45deg, #ff6b6b20, #4ecdc420);
+    border: 1px solid rgba(78, 205, 196, 0.3);
+    border-radius: 15px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .cvIcon {
+    font-size: 2rem;
+    color: #4ecdc4;
+  }
+  
+  .cvButton small {
+    display: block;
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+  }
+  
+  /* Form Column */
+  .formColumn {
+    position: relative;
+  }
+  
+  .formContainer {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .formTitle {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #fff;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .formGroup label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+  
+  .formInput,
+  .formTextarea {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .formInput:focus,
+  .formTextarea:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
+  }
+  
+  .formTextarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  /* Submit Button */
+  .submitButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.2rem;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .submitButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .submitButton:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .sendIcon {
+    transition: transform 0.3s ease;
+  }
+  
+  .submitButton:hover .sendIcon:not(:disabled) {
+    transform: translateX(5px);
+  }
+  
+  /* Success Message */
+  .successMessage {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(78, 205, 196, 0.1);
+    border: 1px solid #4ecdc4;
+    border-radius: 10px;
+    color: #4ecdc4;
+  }
+  
+  .successIcon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .successMessage p {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+  }
+  
+  /* Map Section */
+  .mapSection {
+    padding: 2rem 2rem 4rem;
+  }
+  
+  .mapContainer {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .map {
+    filter: grayscale(0.5) invert(0.9);
+    transition: all 0.3s ease;
+  }
+  
+  .map:hover {
+    filter: grayscale(0) invert(0);
+  }
+  
+  /* Copy Notification */
+  .copyNotification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #4ecdc4;
+    color: #0a0a0a;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .contactGrid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  
+    .infoColumn {
+      padding-right: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .socialGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .contactCards {
+      gap: 0.8rem;
+    }
+  
+    .formContainer {
+      padding: 1.5rem;
+    }
+  
+    .copyNotification {
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contactCard {
+      flex-wrap: wrap;
+    }
+  
+    .contactCardContent {
+      width: calc(100% - 85px);
+    }
+  
+    .copyButton {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }

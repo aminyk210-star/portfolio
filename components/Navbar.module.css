@@ -1,0 +1,538 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.5rem 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: black;
+  }
+  
+  .navbar.scrolled {
+    padding: 1rem 2rem;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Logo Styles */
+  .logoLink {
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .logo {
+    position: relative;
+    font-size: 2rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .logoGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(78, 205, 196, 0.4) 0%, transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+  }
+  
+  .logoPrefix,
+  .logoSuffix {
+    color: #4ecdc4;
+    font-size: 1.8rem;
+    opacity: 0.7;
+    font-family: monospace;
+  }
+  
+  .logoName {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+  
+  .logoDev {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  /* Desktop Menu */
+  .desktopMenu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .navLinkWrapper {
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .navLink {
+    position: relative;
+    padding: 0.6rem 1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    isolation: isolate;
+  }
+  
+  .navLink.active {
+    color: #4ecdc4;
+  }
+  
+  .navIcon {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  
+  .navLink:hover .navIcon {
+    transform: scale(1.1);
+  }
+  
+  .navName {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hoverEffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                rgba(78, 205, 196, 0.2) 0%, 
+                transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .activeIndicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  
+  .indicatorDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  
+  .indicatorLine {
+    flex: 1;
+    height: 2px;
+    border-radius: 2px;
+    max-width: 30px;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.7;
+    }
+  }
+  
+  /* Social Links */
+  .socialLinks {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0.5rem;
+  }
+  
+  .socialLink {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .socialLink:hover {
+    background: var(--social-color);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .socialTooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .socialLink:hover .socialTooltip {
+    opacity: 1;
+    top: -40px;
+  }
+  
+  /* CV Button */
+  .cvButton {
+    position: relative;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+  }
+  
+  .cvButtonGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  .cvIcon {
+    font-size: 1rem;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+  
+  .cvButton:hover .cvIcon {
+    animation: none;
+    transform: scale(1.1);
+  }
+  
+  /* Theme Toggle */
+  .themeToggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .themeToggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(15deg);
+  }
+  
+  /* Mobile Menu Button */
+  .mobileMenuBtn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0.5rem;
+  }
+  
+  .hamburger {
+    width: 30px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .hamburger span {
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: left;
+  }
+  
+  /* Mobile Overlay */
+  .mobileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .mobileMenu {
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .mobileParticles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 50%;
+    opacity: 0.2;
+    filter: blur(1px);
+  }
+  
+  .mobileContent {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobileLogo {
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .mobileLogoText {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .mobileLogoGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(78, 205, 196, 0.3) 0%, transparent 70%);
+    filter: blur(30px);
+    z-index: 1;
+  }
+  
+  .mobileNav {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  
+  .mobileNavLink {
+    text-decoration: none;
+  }
+  
+  .mobileNavItem {
+    position: relative;
+    padding: 1.2rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    font-size: 1.3rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .mobileNavIcon {
+    color: var(--link-color);
+    font-size: 1.5rem;
+  }
+  
+  .mobileNavName {
+    flex: 1;
+  }
+  
+  .mobileNavGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                var(--link-color) 0%, 
+                transparent 70%);
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .mobileSocial {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .mobileSocialLink {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .mobileSocialLink:hover {
+    background: var(--social-color);
+    border-color: transparent;
+  }
+  
+  .mobileCvButton {
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+  }
+  
+  /* Responsive */
+  @media (max-width: 968px) {
+    .desktopMenu {
+      display: none;
+    }
+  
+    .mobileMenuBtn {
+      display: block;
+    }
+  
+    .navbar {
+      padding: 1rem;
+    }
+  
+    .navbar.scrolled {
+      padding: 0.8rem 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .mobileMenu {
+      max-width: 100%;
+    }
+  
+    .mobileContent {
+      padding: 1.5rem;
+    }
+  
+    .mobileLogoText {
+      font-size: 2rem;
+    }
+  
+    .mobileNavItem {
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+  } 
