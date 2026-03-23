@@ -239,6 +239,18 @@ const interests = [
   { name: "Mécanique", icon: <FaWrench />, color: "#95a5a6" }
 ]
 
+// Deterministic floating icon layout to keep SSR and client render in sync
+const floatingIconItems = Array.from({ length: 20 }, (_, i) => {
+  const row = i % 5
+  const col = Math.floor(i / 5)
+  return {
+    top: 8 + row * 18 + col * 2,
+    left: 6 + col * 22 + row * 3,
+    fontSize: 12 + (i % 5) * 4,
+    label: i % 3 === 0 ? '<>' : i % 3 === 1 ? '{ }' : '</>',
+  }
+})
+
 // Component for animated counter
 function AnimatedCounter({ value, duration = 2 }) {
   const [count, setCount] = useState(0)
@@ -307,14 +319,14 @@ export default function AboutPage() {
           <div className={styles.gridOverlay} />
           
           <div className={styles.floatingIcons}>
-            {[...Array(20)].map((_, i) => (
+            {floatingIconItems.map((item, i) => (
               <motion.div
                 key={i}
                 className={styles.floatingIcon}
                 style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  fontSize: `${Math.random() * 20 + 10}px`,
+                  top: `${item.top}%`,
+                  left: `${item.left}%`,
+                  fontSize: `${item.fontSize}px`,
                 }}
                 animate={{
                   y: [0, -40, 0],
@@ -328,7 +340,7 @@ export default function AboutPage() {
                   delay: i * 0.2
                 }}
               >
-                {i % 3 === 0 ? '<>' : i % 3 === 1 ? '{ }' : '</>'}
+                {item.label}
               </motion.div>
             ))}
           </div>
